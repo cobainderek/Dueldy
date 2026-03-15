@@ -5,7 +5,7 @@
 > "Voce estuda mais porque quer ganhar — e ganha porque estudou mais."
 
 **Derek Cobain** x **Dyone Nunes Andrade**
-FAESA — Centro Universitario | Desenvolvimento Web 2 | 2025
+FAESA — Centro Universitario | Desenvolvimento Web 2 | 2026
 
 ---
 
@@ -136,4 +136,4 @@ valendo/
 
 ## Licenca
 
-© 2025 CYBERNETIC STUDIOS — Derek Cobain x Dyone Nunes Andrade — FAESA
+© 2026 CYBERNETIC STUDIOS — Derek Cobain x Dyone Nunes Andrade — FAESA
