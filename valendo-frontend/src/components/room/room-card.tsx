@@ -15,35 +15,35 @@ export function RoomCard({ room, onJoin, loading }: RoomCardProps) {
   const fillPercent = (room.players.length / room.maxPlayers) * 100;
 
   return (
-    <div className="gradient-border group rounded-xl bg-card/70 backdrop-blur-sm transition-all duration-300 hover:bg-card/90 hover:neon-glow-cyan">
-      <div className="flex items-center gap-5 p-5">
+    <div className="group rounded-xl bg-white card-shadow transition-all duration-300 hover:card-shadow-lg">
+      <div className="flex items-center gap-4 p-4">
         {/* Icon */}
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-neon-cyan/10 transition-all group-hover:bg-neon-cyan/20 group-hover:neon-glow-cyan">
-          <Swords className="h-7 w-7 text-neon-cyan" />
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-blue/10 transition-all group-hover:bg-brand-blue/15">
+          <Swords className="h-6 w-6 text-brand-blue" />
         </div>
 
         {/* Info */}
-        <div className="flex-1 space-y-2">
-          <div className="flex items-center gap-3">
-            <span className="text-lg font-bold">{room.theme}</span>
-            <span className="rounded-lg bg-neon-cyan/10 px-2.5 py-1 font-mono text-xs font-semibold tracking-widest text-neon-cyan">
+        <div className="flex-1 min-w-0 space-y-1.5">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-foreground">{room.theme}</span>
+            <span className="rounded-md bg-brand-blue/10 px-2 py-0.5 font-mono text-[11px] font-semibold tracking-widest text-brand-blue">
               {room.code}
             </span>
           </div>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1.5">
-              <Users className="h-4 w-4" />
-              <span className="font-medium text-foreground">{room.players.length}</span>/{room.maxPlayers}
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <Users className="h-3.5 w-3.5" />
+              <span className="font-semibold text-foreground">{room.players.length}</span>/{room.maxPlayers}
             </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-neon-cyan/50" />
+            <span className="flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-brand-blue/40" />
               {room.rounds} rodadas
             </span>
           </div>
           {/* Player bar */}
           <div className="h-1 w-full overflow-hidden rounded-full bg-secondary">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-cyan/50 transition-all"
+              className="h-full rounded-full bg-gradient-to-r from-brand-blue to-brand-cyan transition-all"
               style={{ width: `${fillPercent}%` }}
             />
           </div>
@@ -53,16 +53,16 @@ export function RoomCard({ room, onJoin, loading }: RoomCardProps) {
         <Button
           disabled={isFull || loading}
           onClick={() => onJoin(room.id)}
-          className="h-12 gap-2 rounded-xl bg-neon-cyan px-6 text-base font-bold text-background shadow-[0_0_15px_#00f0ff22] transition-all hover:bg-neon-cyan/90 hover:shadow-[0_0_25px_#00f0ff44] disabled:opacity-30 disabled:shadow-none"
+          className="h-10 gap-2 rounded-lg bg-brand-blue px-5 text-sm font-bold text-white shadow-sm transition-all hover:bg-brand-blue/90 disabled:opacity-30 disabled:shadow-none"
         >
           {loading ? (
-            <Loader2 className="h-5 w-5 animate-spin" />
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : isFull ? (
             "Cheia"
           ) : (
             <>
               Entrar
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-4 w-4" />
             </>
           )}
         </Button>

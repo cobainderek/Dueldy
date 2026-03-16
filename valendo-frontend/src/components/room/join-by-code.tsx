@@ -33,30 +33,30 @@ export function JoinByCode({ onJoin }: JoinByCodeProps) {
   }
 
   return (
-    <div className="gradient-border rounded-xl bg-card/70 p-5 backdrop-blur-sm">
-      <form onSubmit={handleSubmit} className="flex items-start gap-3">
+    <div className="rounded-xl bg-white card-shadow p-3">
+      <form onSubmit={handleSubmit} className="flex items-start gap-2">
         <div className="relative flex-1">
-          <Hash className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-neon-cyan/40" />
+          <Hash className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="CODIGO DA SALA"
             value={code}
             onChange={(e) => setCode(e.target.value.toUpperCase())}
             maxLength={8}
-            className="h-12 rounded-xl border-border/40 bg-background/60 pl-11 font-mono text-base uppercase tracking-[0.3em] focus-visible:ring-2 focus-visible:ring-neon-cyan/50"
+            className="h-11 rounded-lg border-border bg-secondary/50 pl-10 font-mono text-sm uppercase tracking-[0.2em] text-foreground placeholder:text-muted-foreground/60 focus-visible:ring-2 focus-visible:ring-brand-blue/40"
           />
-          {error && <p className="mt-1.5 text-xs text-destructive">{error}</p>}
+          {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
         </div>
         <Button
           type="submit"
           disabled={loading}
-          className="h-12 gap-2 rounded-xl bg-neon-cyan px-6 text-base font-bold text-background shadow-[0_0_15px_#00f0ff22] transition-all hover:bg-neon-cyan/90 hover:shadow-[0_0_25px_#00f0ff44]"
+          className="h-11 gap-2 rounded-lg bg-brand-blue px-5 text-sm font-bold text-white shadow-sm transition-all hover:bg-brand-blue/90"
         >
           {loading ? (
-            <Loader2 className="h-5 w-5 animate-spin" />
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
             <>
               Entrar
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-4 w-4" />
             </>
           )}
         </Button>

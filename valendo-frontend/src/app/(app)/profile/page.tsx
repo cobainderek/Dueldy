@@ -41,15 +41,15 @@ export default function ProfilePage() {
 
   return (
     <PageTransition>
-      <div className="space-y-10">
+      <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neon-magenta/10 shadow-[0_0_15px_#ff00e522]" role="img" aria-label="Icone de perfil">
-            <User className="h-6 w-6 text-neon-magenta" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-orange/20" role="img" aria-label="Icone de perfil">
+            <User className="h-6 w-6 text-brand-orange" />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tight sm:text-3xl">Perfil</h1>
-            <p className="text-sm text-muted-foreground">Suas informacoes e estatisticas</p>
+            <h1 className="text-2xl font-black tracking-tight text-white sm:text-3xl">Perfil</h1>
+            <p className="text-sm text-white/60">Suas informacoes e estatisticas</p>
           </div>
         </div>
 
@@ -57,19 +57,19 @@ export default function ProfilePage() {
         <ProfileCard profile={profile} onSave={handleSave} />
 
         {/* Stats */}
-        <section aria-label="Estatisticas do jogador" className="space-y-4">
-          <div className="flex items-center gap-2.5">
-            <BarChart3 className="h-5 w-5 text-neon-cyan/60" />
-            <h2 className="text-lg font-bold">Estatisticas</h2>
+        <section aria-label="Estatisticas do jogador" className="space-y-3">
+          <div className="flex items-center gap-2">
+            <BarChart3 className="h-4 w-4 text-brand-cyan" />
+            <span className="text-sm font-bold uppercase tracking-wider text-white/80">Estatisticas</span>
           </div>
           <StatsGrid stats={profile.stats} />
         </section>
 
         {/* Match history */}
-        <section aria-label="Historico de partidas" className="space-y-4">
-          <div className="flex items-center gap-2.5">
-            <History className="h-5 w-5 text-neon-cyan/60" />
-            <h2 className="text-lg font-bold">Partidas Recentes</h2>
+        <section aria-label="Historico de partidas" className="space-y-3">
+          <div className="flex items-center gap-2">
+            <History className="h-4 w-4 text-brand-cyan" />
+            <span className="text-sm font-bold uppercase tracking-wider text-white/80">Partidas Recentes</span>
           </div>
           <MatchHistory matches={profile.recentMatches} />
         </section>

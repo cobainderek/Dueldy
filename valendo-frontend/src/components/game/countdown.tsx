@@ -23,8 +23,8 @@ export function Countdown({ onComplete }: CountdownProps) {
       <p className="font-mono text-sm font-medium tracking-widest text-muted-foreground uppercase">
         A partida vai comecar
       </p>
-      <div className="flex h-40 w-40 items-center justify-center rounded-3xl bg-card/80 neon-glow-cyan-strong">
-        <span className="font-mono text-8xl font-black text-neon-cyan neon-text-cyan">
+      <div className="flex h-40 w-40 items-center justify-center rounded-3xl bg-white card-shadow-lg">
+        <span className="font-mono text-8xl font-black text-brand-blue">
           {count || "GO"}
         </span>
       </div>

@@ -49,20 +49,20 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/85 backdrop-blur-md">
-      <div className="gradient-border w-full max-w-lg rounded-2xl bg-card/95 backdrop-blur-xl neon-glow-magenta-strong">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-dark/85 backdrop-blur-md">
+      <div className="w-full max-w-lg rounded-2xl bg-white card-shadow-lg">
         <div className="p-8">
           {/* Header */}
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-neon-magenta/10 neon-glow-magenta">
-                <Sparkles className="h-6 w-6 text-neon-magenta" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-orange/10">
+                <Sparkles className="h-6 w-6 text-brand-orange" />
               </div>
               <h2 className="text-2xl font-bold">Criar Sala</h2>
             </div>
             <button
               onClick={onClose}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary/50 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary text-muted-foreground transition-colors hover:bg-secondary/80 hover:text-foreground"
             >
               <X className="h-5 w-5" />
             </button>
@@ -87,8 +87,8 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
                     onClick={() => setTheme(t.name)}
                     className={`flex flex-col items-center gap-1.5 rounded-xl border-2 px-2 py-3 text-xs font-medium transition-all ${
                       theme === t.name
-                        ? "border-neon-magenta bg-neon-magenta/10 text-neon-magenta neon-glow-magenta"
-                        : "border-border/30 bg-background/40 text-muted-foreground hover:border-border/60 hover:bg-background/60"
+                        ? "border-brand-orange bg-brand-orange/10 text-brand-orange"
+                        : "border-border/30 bg-white text-muted-foreground hover:border-border/60 hover:bg-secondary/30"
                     }`}
                   >
                     <span className="text-xl">{t.emoji}</span>
@@ -102,7 +102,7 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="rounds" className="flex items-center gap-2 text-sm font-medium">
-                  <Repeat className="h-4 w-4 text-neon-magenta/60" />
+                  <Repeat className="h-4 w-4 text-brand-orange/60" />
                   Rodadas
                 </Label>
                 <Input
@@ -112,12 +112,12 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
                   max={20}
                   value={rounds}
                   onChange={(e) => setRounds(Number(e.target.value))}
-                  className="h-12 rounded-xl border-border/40 bg-background/60 text-center text-lg font-bold focus-visible:ring-2 focus-visible:ring-neon-magenta/50"
+                  className="h-12 rounded-xl border-border/40 bg-background/60 text-center text-lg font-bold focus-visible:ring-2 focus-visible:ring-brand-orange/50"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="maxPlayers" className="flex items-center gap-2 text-sm font-medium">
-                  <Users className="h-4 w-4 text-neon-magenta/60" />
+                  <Users className="h-4 w-4 text-brand-orange/60" />
                   Max Jogadores
                 </Label>
                 <Input
@@ -127,7 +127,7 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
                   max={10}
                   value={maxPlayers}
                   onChange={(e) => setMaxPlayers(Number(e.target.value))}
-                  className="h-12 rounded-xl border-border/40 bg-background/60 text-center text-lg font-bold focus-visible:ring-2 focus-visible:ring-neon-magenta/50"
+                  className="h-12 rounded-xl border-border/40 bg-background/60 text-center text-lg font-bold focus-visible:ring-2 focus-visible:ring-brand-orange/50"
                 />
               </div>
             </div>
@@ -143,7 +143,7 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
                 type="checkbox"
                 checked={isPrivate}
                 onChange={(e) => setIsPrivate(e.target.checked)}
-                className="h-5 w-5 rounded accent-neon-magenta"
+                className="h-5 w-5 rounded accent-brand-orange"
               />
             </label>
 
@@ -151,7 +151,7 @@ export function CreateRoomModal({ open, onClose, onCreate }: CreateRoomModalProp
             <Button
               type="submit"
               disabled={loading}
-              className="h-13 w-full rounded-xl bg-neon-magenta text-base font-bold tracking-wide text-white shadow-[0_0_20px_#ff00e533] transition-all hover:bg-neon-magenta/90 hover:shadow-[0_0_30px_#ff00e555]"
+              className="h-13 w-full rounded-xl bg-brand-orange text-base font-bold tracking-wide text-white shadow-md transition-all hover:shadow-lg hover:bg-brand-orange-dark"
             >
               {loading ? (
                 <Loader2 className="h-5 w-5 animate-spin" />

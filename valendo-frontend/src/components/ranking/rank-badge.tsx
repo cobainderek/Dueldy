@@ -17,7 +17,7 @@ export function RankBadge({ rank, size = "sm" }: RankBadgeProps) {
   if (rank > 3) {
     const s = size === "lg" ? "h-12 w-12 text-lg" : "h-9 w-9 text-sm";
     return (
-      <span className={`flex items-center justify-center rounded-xl bg-secondary/50 font-mono font-bold text-muted-foreground ${s}`}>
+      <span className={`flex items-center justify-center rounded-xl bg-secondary font-mono font-bold text-muted-foreground ${s}`}>
         {rank}
       </span>
     );

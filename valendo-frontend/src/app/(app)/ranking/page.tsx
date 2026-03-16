@@ -42,15 +42,15 @@ export default function RankingPage() {
 
   return (
     <PageTransition>
-      <div className="space-y-8">
+      <div className="space-y-6">
         {/* Header */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 shadow-[0_0_15px_#eab30822]" role="img" aria-label="Icone de ranking">
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/20" role="img" aria-label="Icone de ranking">
             <Trophy className="h-6 w-6 text-yellow-400" />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tight sm:text-3xl">Ranking</h1>
-            <p className="text-sm text-muted-foreground">Os melhores jogadores da plataforma</p>
+            <h1 className="text-2xl font-black tracking-tight text-white sm:text-3xl">Ranking</h1>
+            <p className="text-sm text-white/60">Os melhores jogadores da plataforma</p>
           </div>
         </div>
 
@@ -67,8 +67,8 @@ export default function RankingPage() {
                 onClick={() => setPeriod(p.value)}
                 className={`flex items-center gap-2 rounded-xl border-2 px-4 py-2.5 text-sm font-semibold transition-all sm:px-5 ${
                   active
-                    ? "border-neon-cyan/50 bg-neon-cyan/10 text-neon-cyan neon-glow-cyan"
-                    : "border-border/30 bg-card/40 text-muted-foreground hover:border-border/50 hover:bg-card/60"
+                    ? "border-brand-blue/50 bg-brand-blue/20 text-white glow-blue"
+                    : "border-white/20 bg-white/5 text-white/60 hover:border-white/30 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 <Icon className="h-4 w-4" />

@@ -31,6 +31,11 @@ function buildMockResponse(name: string, email: string): AuthResponse {
 export async function mockLogin(credentials: LoginCredentials): Promise<AuthResponse> {
   await new Promise((r) => setTimeout(r, 500)); // simula latência
 
+  // Guest login
+  if (credentials.email === "guest@valendo.app" && credentials.password === "guest123") {
+    return buildMockResponse("Convidado", credentials.email);
+  }
+
   if (credentials.email !== MOCK_EMAIL || credentials.password !== MOCK_PASSWORD) {
     throw new Error("Email ou senha inválidos.");
   }

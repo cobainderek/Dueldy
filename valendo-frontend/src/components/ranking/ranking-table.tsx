@@ -19,12 +19,10 @@ export function RankingTable({ players, currentUserId }: RankingTableProps) {
         return (
           <div
             key={player.playerId}
-            className={`group flex items-center gap-4 rounded-2xl border-2 px-5 py-4 transition-all ${
+            className={`group flex items-center gap-4 rounded-2xl px-5 py-4 transition-all ${
               isMe
-                ? "border-neon-cyan/30 bg-neon-cyan/[0.05] neon-glow-cyan"
-                : isTop3
-                  ? "border-border/30 bg-card/70"
-                  : "border-border/20 bg-card/40"
+                ? "bg-white card-shadow-lg border-2 border-brand-blue/30 glow-blue"
+                : "bg-white card-shadow"
             }`}
           >
             {/* Rank */}
@@ -33,9 +31,9 @@ export function RankingTable({ players, currentUserId }: RankingTableProps) {
             {/* Player info */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <span className={`truncate font-bold ${isMe ? "text-neon-cyan" : ""}`}>
+                <span className={`truncate font-bold ${isMe ? "text-brand-blue" : ""}`}>
                   {player.name}
-                  {isMe && <span className="ml-1.5 text-xs font-normal text-neon-cyan/70">(voce)</span>}
+                  {isMe && <span className="ml-1.5 text-xs font-normal text-brand-blue/70">(voce)</span>}
                 </span>
                 <span className="font-mono text-xs text-muted-foreground">{player.tag}</span>
               </div>
@@ -54,8 +52,8 @@ export function RankingTable({ players, currentUserId }: RankingTableProps) {
             {/* Points */}
             <div className="text-right">
               <div className="flex items-center gap-1.5">
-                <Zap className={`h-4 w-4 ${isTop3 ? "text-neon-cyan" : "text-muted-foreground"}`} />
-                <span className={`font-mono text-xl font-black ${isTop3 ? "text-neon-cyan" : "text-foreground"}`}>
+                <Zap className={`h-4 w-4 ${isTop3 ? "text-brand-blue" : "text-muted-foreground"}`} />
+                <span className={`font-mono text-xl font-black ${isTop3 ? "text-brand-blue" : "text-foreground"}`}>
                   {player.points.toLocaleString()}
                 </span>
               </div>

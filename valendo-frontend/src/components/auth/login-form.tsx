@@ -3,10 +3,9 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader2, Zap, Mail, Lock } from "lucide-react";
+import { Loader2, User, KeyRound, Swords, Gamepad2, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/use-auth";
 
 export function LoginForm() {
@@ -16,6 +15,7 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [guestLoading, setGuestLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -42,87 +42,124 @@ export function LoginForm() {
     }
   }
 
+  async function handleGuestLogin() {
+    setError("");
+    setGuestLoading(true);
+    try {
+      await login({ email: "guest@valendo.app", password: "guest123" });
+      router.push("/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erro ao entrar como convidado.");
+    } finally {
+      setGuestLoading(false);
+    }
+  }
+
   return (
-    <div className="gradient-border rounded-2xl bg-card/90 backdrop-blur-xl neon-glow-cyan">
-      <div className="space-y-8 p-8">
+    <div className="w-full max-w-sm rounded-2xl bg-white p-8 card-shadow-lg">
+      <div className="space-y-6">
         {/* Logo */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-neon-cyan/10 neon-glow-cyan-strong">
-            <Zap className="h-8 w-8 text-neon-cyan" />
-          </div>
-          <div className="text-center">
-            <h1 className="font-mono text-3xl font-black tracking-widest text-neon-cyan neon-text-cyan">
-              VALENDO
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Entre com sua conta para jogar
+        <div className="flex flex-col items-center gap-1">
+          <h1 className="font-mono text-3xl font-bold">
+            <span className="text-[#2B5EA7]">Valen</span>
+            <span className="text-[#F5A623]">do!</span>
+          </h1>
+          <div className="flex items-center gap-1">
+            <GraduationCap className="h-3 w-3 text-[#4CAF50]" />
+            <p className="text-xs uppercase tracking-widest text-[#4CAF50] font-semibold">
+              Aprenda Duelando
             </p>
+          </div>
+        </div>
+
+        {/* Avatar */}
+        <div className="flex justify-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#5BBCE4]">
+            <User className="h-10 w-10 text-white" />
           </div>
         </div>
 
         {/* Error */}
         {error && (
-          <div className="rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+          <div className="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-600">
             {error}
           </div>
         )}
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="space-y-2">
-            <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium">
-              <Mail className="h-4 w-4 text-neon-cyan/60" />
-              Email
-            </Label>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="relative">
+            <User className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#C5D5E8]" />
             <Input
               id="email"
               type="email"
-              placeholder="seu@email.com"
+              placeholder="Seu apelido..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-12 rounded-xl border-border/40 bg-background/60 px-4 text-base focus-visible:ring-2 focus-visible:ring-neon-cyan/50"
+              className="h-12 rounded-xl border-[#C5D5E8] bg-white pl-10 pr-4 text-base placeholder:text-[#C5D5E8] focus-visible:ring-2 focus-visible:ring-[#2B5EA7]/30"
             />
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="password" className="flex items-center gap-2 text-sm font-medium">
-              <Lock className="h-4 w-4 text-neon-cyan/60" />
-              Senha
-            </Label>
+          <div className="relative">
+            <KeyRound className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#C5D5E8]" />
             <Input
               id="password"
               type="password"
-              placeholder="********"
+              placeholder="Senha..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="h-12 rounded-xl border-border/40 bg-background/60 px-4 text-base focus-visible:ring-2 focus-visible:ring-neon-cyan/50"
+              className="h-12 rounded-xl border-[#C5D5E8] bg-white pl-10 pr-4 text-base placeholder:text-[#C5D5E8] focus-visible:ring-2 focus-visible:ring-[#2B5EA7]/30"
             />
           </div>
 
           <Button
             type="submit"
             disabled={loading}
-            className="h-12 w-full rounded-xl bg-neon-cyan text-base font-bold tracking-wide text-background shadow-[0_0_20px_#00f0ff33] transition-all hover:bg-neon-cyan/90 hover:shadow-[0_0_30px_#00f0ff55]"
+            className="h-12 w-full rounded-xl bg-[#2B5EA7] text-base font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#244e8a]"
           >
             {loading ? (
               <Loader2 className="h-5 w-5 animate-spin" />
             ) : (
               <>
-                <Zap className="mr-2 h-5 w-5" />
-                Entrar
+                <Swords className="mr-2 h-5 w-5" />
+                Entrar na Disputa
               </>
             )}
           </Button>
         </form>
 
+        {/* Divider */}
+        <div className="flex items-center gap-3">
+          <div className="h-px flex-1 bg-[#C5D5E8]" />
+          <span className="text-sm text-gray-400">ou</span>
+          <div className="h-px flex-1 bg-[#C5D5E8]" />
+        </div>
+
+        {/* Guest Button */}
+        <Button
+          type="button"
+          disabled={guestLoading}
+          onClick={handleGuestLogin}
+          className="h-12 w-full rounded-xl bg-[#F5A623] text-base font-bold uppercase tracking-wider text-white shadow-md transition-all hover:bg-[#db9520]"
+        >
+          {guestLoading ? (
+            <Loader2 className="h-5 w-5 animate-spin" />
+          ) : (
+            <>
+              <Gamepad2 className="mr-2 h-5 w-5" />
+              Entrar como Convidado
+            </>
+          )}
+        </Button>
+
         {/* Footer */}
-        <div className="border-t border-border/30 pt-5 text-center">
-          <p className="text-sm text-muted-foreground">
-            Ainda nao tem conta?{" "}
+        <div className="pt-2 text-center">
+          <p className="text-sm text-gray-500">
+            Novo por aqui?{" "}
             <Link
               href="/register"
-              className="font-semibold text-neon-magenta transition-all hover:underline neon-text-magenta"
+              className="font-semibold text-[#2B5EA7] transition-all hover:underline"
             >
-              Criar conta
+              Criar conta gratis &rarr;
             </Link>
           </p>
         </div>

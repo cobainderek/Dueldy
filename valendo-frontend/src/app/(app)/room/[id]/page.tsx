@@ -69,8 +69,8 @@ export default function RoomLobbyPage() {
   if (loading) {
     return (
       <div className="flex flex-col items-center gap-4 py-32">
-        <Loader2 className="h-10 w-10 animate-spin text-neon-cyan" />
-        <span className="font-mono text-sm text-muted-foreground">Entrando na sala...</span>
+        <Loader2 className="h-10 w-10 animate-spin text-brand-orange" />
+        <span className="font-mono text-sm text-white/60">Entrando na sala...</span>
       </div>
     );
   }
@@ -78,17 +78,17 @@ export default function RoomLobbyPage() {
   if (error || !room) {
     return (
       <div className="flex flex-col items-center gap-6 py-32">
-        <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-destructive/10">
-          <Swords className="h-10 w-10 text-destructive" />
+        <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-red-500/20">
+          <Swords className="h-10 w-10 text-red-400" />
         </div>
         <div className="text-center">
-          <p className="text-lg font-semibold text-destructive">{error || "Sala nao encontrada."}</p>
-          <p className="mt-1 text-sm text-muted-foreground">A sala pode ter sido encerrada</p>
+          <p className="text-lg font-semibold text-red-400">{error || "Sala nao encontrada."}</p>
+          <p className="mt-1 text-sm text-white/50">A sala pode ter sido encerrada</p>
         </div>
         <Button
           variant="outline"
           onClick={() => router.push("/dashboard")}
-          className="gap-2 rounded-xl"
+          className="gap-2 rounded-xl border-white/20 bg-white/5 text-white hover:bg-white/10"
         >
           <ArrowLeft className="h-5 w-5" />
           Voltar ao Dashboard
@@ -103,35 +103,35 @@ export default function RoomLobbyPage() {
   const canStart = isOwner && allReady && room.players.length >= 2;
 
   return (
-    <div className="mx-auto max-w-2xl space-y-8 pt-4">
+    <div className="mx-auto max-w-2xl space-y-5 pt-2">
       {/* Back + connection status */}
       <div className="flex items-center justify-between">
         <button
           onClick={handleLeave}
-          className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm text-muted-foreground transition-colors hover:bg-secondary/50 hover:text-foreground"
+          className="flex items-center gap-2 rounded-lg px-2 py-1 text-sm text-white/60 transition-colors hover:bg-white/10 hover:text-white"
         >
-          <ArrowLeft className="h-5 w-5" />
+          <ArrowLeft className="h-4 w-4" />
           Sair da sala
         </button>
         <ConnectionStatus status={socketStatus} />
       </div>
 
       {/* Room header card */}
-      <div className="gradient-border overflow-hidden rounded-2xl bg-card/80 backdrop-blur-xl neon-glow-cyan-strong">
+      <div className="overflow-hidden rounded-2xl bg-white card-shadow-lg">
         {/* Top gradient bar */}
-        <div className="h-1 w-full bg-gradient-to-r from-neon-cyan via-neon-magenta to-neon-cyan" />
+        <div className="h-1 w-full bg-gradient-to-r from-brand-blue via-brand-orange to-brand-blue" />
 
-        <div className="p-8">
+        <div className="p-6">
           {/* Title row */}
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-neon-cyan/10 neon-glow-cyan">
-                <Swords className="h-8 w-8 text-neon-cyan" />
+            <div className="flex items-center gap-3">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-blue/10">
+                <Swords className="h-7 w-7 text-brand-blue" />
               </div>
               <div>
-                <h1 className="text-2xl font-black">{room.theme}</h1>
-                <div className="mt-1 flex items-center gap-1.5">
-                  {room.isPrivate && <Lock className="h-3.5 w-3.5 text-neon-magenta" />}
+                <h1 className="text-xl font-black text-foreground">{room.theme}</h1>
+                <div className="mt-0.5 flex items-center gap-1.5">
+                  {room.isPrivate && <Lock className="h-3.5 w-3.5 text-brand-orange" />}
                   <span className="text-sm text-muted-foreground">
                     {room.isPrivate ? "Sala privada" : "Sala publica"}
                   </span>
@@ -142,33 +142,33 @@ export default function RoomLobbyPage() {
             {/* Code badge */}
             <button
               onClick={handleCopyCode}
-              className="flex items-center gap-2.5 rounded-xl border border-neon-cyan/20 bg-neon-cyan/[0.06] px-4 py-2.5 font-mono text-base font-bold tracking-[0.25em] text-neon-cyan transition-all hover:border-neon-cyan/40 hover:bg-neon-cyan/10"
+              className="flex items-center gap-2 rounded-lg border border-brand-blue/20 bg-brand-blue/5 px-3 py-2 font-mono text-sm font-bold tracking-[0.2em] text-brand-blue transition-all hover:border-brand-blue/40 hover:bg-brand-blue/10"
             >
               {room.code}
               {copied ? (
-                <Check className="h-5 w-5 text-neon-green" />
+                <Check className="h-4 w-4 text-brand-green" />
               ) : (
-                <Copy className="h-5 w-5 opacity-60" />
+                <Copy className="h-4 w-4 opacity-50" />
               )}
             </button>
           </div>
 
           {/* Stats row */}
-          <div className="mt-6 flex gap-6">
-            <div className="flex items-center gap-2.5 rounded-xl bg-secondary/50 px-4 py-2.5">
-              <Repeat className="h-5 w-5 text-neon-cyan" />
+          <div className="mt-4 flex gap-4">
+            <div className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-2">
+              <Repeat className="h-4 w-4 text-brand-blue" />
               <div>
-                <p className="text-xs text-muted-foreground">Rodadas</p>
-                <p className="text-lg font-bold">{room.rounds}</p>
+                <p className="text-[10px] text-muted-foreground">Rodadas</p>
+                <p className="text-base font-bold text-foreground">{room.rounds}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2.5 rounded-xl bg-secondary/50 px-4 py-2.5">
-              <Users className="h-5 w-5 text-neon-magenta" />
+            <div className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-2">
+              <Users className="h-4 w-4 text-brand-orange" />
               <div>
-                <p className="text-xs text-muted-foreground">Jogadores</p>
-                <p className="text-lg font-bold">
+                <p className="text-[10px] text-muted-foreground">Jogadores</p>
+                <p className="text-base font-bold text-foreground">
                   {room.players.length}
-                  <span className="text-sm font-normal text-muted-foreground">/{room.maxPlayers}</span>
+                  <span className="text-xs font-normal text-muted-foreground">/{room.maxPlayers}</span>
                 </p>
               </div>
             </div>
@@ -177,10 +177,10 @@ export default function RoomLobbyPage() {
       </div>
 
       {/* Players section */}
-      <div className="space-y-4">
-        <div className="flex items-center gap-2.5">
-          <Shield className="h-5 w-5 text-neon-cyan/60" />
-          <h2 className="text-base font-semibold text-muted-foreground">Jogadores na sala</h2>
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <Shield className="h-4 w-4 text-brand-cyan" />
+          <span className="text-sm font-bold uppercase tracking-wider text-white/80">Jogadores na sala</span>
         </div>
         <PlayerList players={room.players} ownerId={room.owner} />
       </div>
@@ -190,10 +190,10 @@ export default function RoomLobbyPage() {
         {currentPlayer && (
           <Button
             onClick={handleToggleReady}
-            className={`h-14 flex-1 gap-2.5 rounded-xl text-base font-bold transition-all ${
+            className={`h-12 flex-1 gap-2 rounded-xl text-base font-bold transition-all ${
               currentPlayer.isReady
-                ? "border-2 border-border/40 bg-secondary/50 text-foreground hover:bg-secondary/70"
-                : "bg-neon-cyan text-background shadow-[0_0_20px_#00f0ff33] hover:bg-neon-cyan/90 hover:shadow-[0_0_30px_#00f0ff55]"
+                ? "border-2 border-white/20 bg-white/10 text-white hover:bg-white/15"
+                : "bg-brand-blue text-white shadow-md hover:bg-brand-blue/90"
             }`}
           >
             {currentPlayer.isReady ? (
@@ -209,9 +209,9 @@ export default function RoomLobbyPage() {
         {canStart && (
           <Button
             onClick={() => router.push(`/room/${id}/play?theme=${encodeURIComponent(room.theme)}&rounds=${room.rounds}`)}
-            className="h-14 flex-1 gap-2.5 rounded-xl bg-neon-magenta text-base font-bold text-white shadow-[0_0_20px_#ff00e533] transition-all hover:bg-neon-magenta/90 hover:shadow-[0_0_30px_#ff00e555]"
+            className="h-12 flex-1 gap-2 rounded-xl bg-brand-orange text-base font-bold text-white shadow-md transition-all hover:bg-brand-orange-dark"
           >
-            <Play className="h-6 w-6" />
+            <Play className="h-5 w-5" />
             Iniciar Partida
           </Button>
         )}
@@ -219,8 +219,8 @@ export default function RoomLobbyPage() {
 
       {/* Status message */}
       {isOwner && !canStart && (
-        <div className="border-pulse-cyan rounded-xl border border-neon-cyan/20 bg-neon-cyan/[0.03] px-5 py-4 text-center">
-          <p className="text-sm text-muted-foreground">
+        <div className="border-pulse-blue rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-center">
+          <p className="text-sm text-white/60">
             {room.players.length < 2
               ? "Compartilhe o codigo da sala para convidar jogadores..."
               : "Aguardando todos os jogadores ficarem prontos..."}

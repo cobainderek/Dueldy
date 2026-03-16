@@ -10,9 +10,9 @@ interface ScoreboardProps {
 
 export function Scoreboard({ players, title = "Resultado da Rodada" }: ScoreboardProps) {
   return (
-    <div className="gradient-border rounded-2xl bg-card/80 p-6 backdrop-blur-sm">
+    <div className="rounded-2xl bg-white card-shadow p-6">
       <h3 className="mb-5 flex items-center gap-2 text-lg font-bold">
-        <Trophy className="h-6 w-6 text-neon-cyan" />
+        <Trophy className="h-6 w-6 text-brand-blue" />
         {title}
       </h3>
       <div className="space-y-3">
@@ -21,14 +21,14 @@ export function Scoreboard({ players, title = "Resultado da Rodada" }: Scoreboar
             key={player.playerId}
             className={`flex items-center gap-4 rounded-xl border px-5 py-4 ${
               i === 0
-                ? "border-neon-cyan/30 bg-neon-cyan/[0.05]"
+                ? "border-brand-blue/30 bg-brand-blue/5"
                 : "border-border/30 bg-background/40"
             }`}
           >
             {/* Rank */}
             <span
               className={`flex h-10 w-10 items-center justify-center rounded-lg font-mono text-lg font-black ${
-                i === 0 ? "bg-neon-cyan/15 text-neon-cyan" : "bg-secondary text-muted-foreground"
+                i === 0 ? "bg-brand-blue/15 text-brand-blue" : "bg-secondary text-muted-foreground"
               }`}
             >
               {i + 1}
@@ -39,7 +39,7 @@ export function Scoreboard({ players, title = "Resultado da Rodada" }: Scoreboar
               <span className="font-semibold">{player.name}</span>
               <div className="flex items-center gap-1 text-xs">
                 {player.correct ? (
-                  <span className="flex items-center gap-1 text-neon-green">
+                  <span className="flex items-center gap-1 text-brand-green">
                     <Check className="h-3 w-3" /> Acertou +{player.points}pts
                   </span>
                 ) : (
@@ -52,7 +52,7 @@ export function Scoreboard({ players, title = "Resultado da Rodada" }: Scoreboar
 
             {/* Total */}
             <div className="text-right">
-              <span className="font-mono text-xl font-black text-neon-cyan">{player.totalPoints}</span>
+              <span className="font-mono text-xl font-black text-brand-blue">{player.totalPoints}</span>
               <p className="text-[10px] text-muted-foreground">pontos</p>
             </div>
           </div>

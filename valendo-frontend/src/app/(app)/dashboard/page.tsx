@@ -12,7 +12,7 @@ import { CreateRoomModal } from "@/components/room/create-room-modal";
 import { JoinByCode } from "@/components/room/join-by-code";
 import { mockListRooms, mockCreateRoom, mockJoinRoom, mockJoinByCode } from "@/lib/mock-rooms";
 import type { Room, CreateRoomPayload } from "@/types";
-import { LogOut, Plus, RefreshCw, Swords, Hash, Zap } from "lucide-react";
+import { LogOut, Plus, RefreshCw, Swords, Hash, GraduationCap } from "lucide-react";
 
 export default function DashboardPage() {
   const { user, logout } = useAuth();
@@ -72,25 +72,25 @@ export default function DashboardPage() {
 
   return (
     <PageTransition>
-      <div className="space-y-10">
+      <div className="space-y-6">
         {/* Hero header */}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neon-cyan/10 neon-glow-cyan" role="img" aria-label="Icone do dashboard">
-              <Zap className="h-6 w-6 text-neon-cyan" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-orange/20" role="img" aria-label="Icone do dashboard">
+              <GraduationCap className="h-6 w-6 text-brand-orange" />
             </div>
             <div>
-              <h1 className="text-2xl font-black tracking-tight sm:text-3xl">
-                Ola, <span className="text-neon-cyan neon-text-cyan">{user?.name}</span>
+              <h1 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
+                Ola, <span className="text-brand-orange">{user?.name}</span>
               </h1>
-              <p className="text-sm text-muted-foreground">Pronto para um duelo?</p>
+              <p className="text-sm text-white/60">Pronto para um duelo?</p>
             </div>
           </div>
           <Button
             variant="outline"
             onClick={logout}
             aria-label="Sair da conta"
-            className="gap-2.5 self-start rounded-xl border-border/40 px-5 py-2.5 transition-all hover:border-neon-magenta/50 hover:bg-neon-magenta/10 hover:text-neon-magenta"
+            className="gap-2.5 self-start rounded-xl border-white/20 bg-white/5 px-5 py-2.5 text-white/80 transition-all hover:border-red-400/50 hover:bg-red-500/10 hover:text-red-400"
           >
             <LogOut className="h-5 w-5" />
             <span className="sm:inline">Sair</span>
@@ -98,27 +98,27 @@ export default function DashboardPage() {
         </div>
 
         {/* Join by code section */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-2.5">
-            <Hash className="h-5 w-5 text-neon-cyan/60" />
-            <h2 className="text-base font-semibold text-muted-foreground">Entrar por codigo</h2>
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Hash className="h-4 w-4 text-brand-cyan" />
+            <span className="text-sm font-bold uppercase tracking-wider text-white/80">Entrar por codigo</span>
           </div>
           <JoinByCode onJoin={handleJoinByCode} />
         </div>
 
         {/* Room list section */}
-        <div className="space-y-5">
+        <div className="space-y-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-2.5">
-              <Swords className="h-6 w-6 text-neon-cyan" />
-              <h2 className="text-xl font-bold">Salas abertas</h2>
+            <div className="flex items-center gap-2">
+              <Swords className="h-5 w-5 text-brand-orange" />
+              <span className="text-base font-bold uppercase tracking-wider text-white">Salas abertas</span>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               <Button
                 variant="outline"
                 onClick={fetchRooms}
                 aria-label="Atualizar lista de salas"
-                className="gap-2 rounded-xl border-border/40 px-4 transition-all hover:border-neon-cyan/30 hover:bg-neon-cyan/5"
+                className="gap-2 rounded-xl border-white/20 bg-white/5 px-4 text-white/80 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
               >
                 <RefreshCw className="h-4 w-4" />
                 Atualizar
@@ -126,7 +126,7 @@ export default function DashboardPage() {
               <Button
                 onClick={() => setShowCreate(true)}
                 aria-label="Criar nova sala"
-                className="gap-2 rounded-xl bg-neon-magenta px-6 font-bold text-white shadow-[0_0_20px_#ff00e522] transition-all hover:bg-neon-magenta/90 hover:shadow-[0_0_30px_#ff00e544]"
+                className="gap-2 rounded-xl bg-brand-orange px-6 font-bold text-white shadow-md transition-all hover:bg-brand-orange-dark hover:shadow-lg"
               >
                 <Plus className="h-5 w-5" />
                 Criar Sala
@@ -135,8 +135,8 @@ export default function DashboardPage() {
           </div>
 
           {rooms.length === 0 ? (
-            <div className="gradient-border flex flex-col items-center gap-4 rounded-2xl bg-card/50 py-16 text-center backdrop-blur-sm sm:py-20">
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary/50">
+            <div className="flex flex-col items-center gap-4 rounded-2xl bg-white py-16 text-center card-shadow sm:py-20">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-secondary">
                 <Swords className="h-8 w-8 text-muted-foreground" />
               </div>
               <div>
@@ -145,14 +145,14 @@ export default function DashboardPage() {
               </div>
               <Button
                 onClick={() => setShowCreate(true)}
-                className="mt-2 gap-2 rounded-xl bg-neon-magenta px-6 font-bold text-white shadow-[0_0_15px_#ff00e522]"
+                className="mt-2 gap-2 rounded-xl bg-brand-orange px-6 font-bold text-white shadow-md hover:bg-brand-orange-dark hover:shadow-lg"
               >
                 <Plus className="h-5 w-5" />
                 Criar Sala
               </Button>
             </div>
           ) : (
-            <div className="space-y-4" role="list" aria-label="Lista de salas">
+            <div className="space-y-3" role="list" aria-label="Lista de salas">
               {rooms.map((room) => (
                 <div key={room.id} role="listitem">
                   <RoomCard

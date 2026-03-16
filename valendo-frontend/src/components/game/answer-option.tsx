@@ -23,26 +23,26 @@ export function AnswerOption({
   disabled,
   onSelect,
 }: AnswerOptionProps) {
-  let borderColor = "border-border/40 hover:border-neon-cyan/40";
-  let bgColor = "bg-card/60 hover:bg-card/90";
+  let borderColor = "border-border hover:border-brand-blue/40";
+  let bgColor = "bg-white hover:bg-brand-blue/5";
   let labelBg = "bg-secondary/70 text-muted-foreground";
   let icon = null;
 
   if (selected && !revealed) {
-    borderColor = "border-neon-cyan/60";
-    bgColor = "bg-neon-cyan/[0.08]";
-    labelBg = "bg-neon-cyan/20 text-neon-cyan";
+    borderColor = "border-brand-blue/60";
+    bgColor = "bg-brand-blue/10";
+    labelBg = "bg-brand-blue/20 text-brand-blue";
   }
 
   if (revealed) {
     if (correct === true) {
-      borderColor = "border-neon-green/60";
-      bgColor = "bg-neon-green/[0.08]";
-      labelBg = "bg-neon-green/20 text-neon-green";
-      icon = <Check className="h-6 w-6 text-neon-green" />;
+      borderColor = "border-brand-green/60";
+      bgColor = "bg-brand-green/10";
+      labelBg = "bg-brand-green/20 text-brand-green";
+      icon = <Check className="h-6 w-6 text-brand-green" />;
     } else if (selected && correct === false) {
       borderColor = "border-destructive/60";
-      bgColor = "bg-destructive/[0.08]";
+      bgColor = "bg-destructive/10";
       labelBg = "bg-destructive/20 text-destructive";
       icon = <X className="h-6 w-6 text-destructive" />;
     } else {

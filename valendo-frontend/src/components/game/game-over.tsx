@@ -24,13 +24,13 @@ export function GameOver({ players, currentUserId, onBackToDashboard }: GameOver
     <div className="flex min-h-[70vh] flex-col items-center justify-center gap-10">
       {/* Winner announce */}
       <div className="flex flex-col items-center gap-4 text-center">
-        <div className={`flex h-24 w-24 items-center justify-center rounded-3xl ${isWinner ? "bg-yellow-500/15 neon-glow-cyan-strong" : "bg-secondary/50"}`}>
+        <div className={`flex h-24 w-24 items-center justify-center rounded-3xl ${isWinner ? "bg-yellow-500/15 card-shadow-lg" : "bg-secondary/50"}`}>
           <Trophy className={`h-12 w-12 ${isWinner ? "text-yellow-400" : "text-muted-foreground"}`} />
         </div>
         <div>
           <h1 className="text-4xl font-black">
             {isWinner ? (
-              <span className="text-neon-cyan neon-text-cyan">Vitoria!</span>
+              <span className="text-brand-blue">Vitoria!</span>
             ) : (
               "Fim de Jogo"
             )}
@@ -58,7 +58,7 @@ export function GameOver({ players, currentUserId, onBackToDashboard }: GameOver
             <div
               key={player.playerId}
               className={`flex items-center gap-4 rounded-2xl border-2 px-6 py-5 transition-all ${cfg.border} ${cfg.bg} ${
-                isMe ? "neon-glow-cyan" : ""
+                isMe ? "glow-blue" : ""
               }`}
             >
               {/* Rank icon */}
@@ -71,7 +71,7 @@ export function GameOver({ players, currentUserId, onBackToDashboard }: GameOver
                 <div className="flex items-center gap-2">
                   <span className="text-lg font-bold">
                     {player.name}
-                    {isMe && <span className="ml-1 text-xs text-neon-cyan">(voce)</span>}
+                    {isMe && <span className="ml-1 text-xs text-brand-blue">(voce)</span>}
                   </span>
                   <span className="font-mono text-xs text-muted-foreground">{player.tag}</span>
                 </div>
@@ -83,7 +83,7 @@ export function GameOver({ players, currentUserId, onBackToDashboard }: GameOver
 
               {/* Points */}
               <div className="text-right">
-                <span className={`font-mono text-3xl font-black ${i === 0 ? "text-neon-cyan neon-text-cyan" : cfg.text}`}>
+                <span className={`font-mono text-3xl font-black ${i === 0 ? "text-brand-blue" : cfg.text}`}>
                   {player.totalPoints}
                 </span>
                 <p className="text-[10px] text-muted-foreground">pontos</p>
@@ -96,7 +96,7 @@ export function GameOver({ players, currentUserId, onBackToDashboard }: GameOver
       {/* CTA */}
       <Button
         onClick={onBackToDashboard}
-        className="h-14 gap-2.5 rounded-xl bg-neon-cyan px-8 text-base font-bold text-background shadow-[0_0_20px_#00f0ff33] transition-all hover:bg-neon-cyan/90 hover:shadow-[0_0_30px_#00f0ff55]"
+        className="h-14 gap-2.5 rounded-xl bg-brand-blue px-8 text-base font-bold text-white shadow-md transition-all hover:shadow-lg hover:bg-brand-blue/90"
       >
         Voltar ao Dashboard
         <ArrowRight className="h-5 w-5" />

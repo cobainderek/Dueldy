@@ -124,8 +124,8 @@ export default function GamePlayPage() {
   if (phase === "loading") {
     return (
       <div className="flex min-h-[70vh] flex-col items-center justify-center gap-4">
-        <Loader2 className="h-10 w-10 animate-spin text-neon-cyan" />
-        <span className="font-mono text-sm text-muted-foreground">Gerando perguntas sobre {theme}...</span>
+        <Loader2 className="h-10 w-10 animate-spin text-brand-blue" />
+        <span className="font-mono text-sm text-white/60">Gerando perguntas sobre {theme}...</span>
       </div>
     );
   }
@@ -133,7 +133,7 @@ export default function GamePlayPage() {
   // ── Countdown ──
   if (phase === "countdown") {
     return (
-      <div className="cyber-grid min-h-[80vh]">
+      <div className="min-h-[80vh]">
         <Countdown onComplete={startRound} />
       </div>
     );
@@ -142,7 +142,7 @@ export default function GamePlayPage() {
   // ── Game Over ──
   if (phase === "gameover" && gameEnd) {
     return (
-      <div className="cyber-grid min-h-[80vh]">
+      <div className="min-h-[80vh]">
         <GameOver
           players={gameEnd.players}
           currentUserId={user?.id ?? ""}
@@ -179,7 +179,7 @@ export default function GamePlayPage() {
         <div className="flex justify-center">
           <button
             onClick={handleNextRound}
-            className="group flex items-center gap-2 rounded-xl bg-neon-cyan px-8 py-4 text-base font-bold text-background shadow-[0_0_20px_#00f0ff33] transition-all hover:shadow-[0_0_30px_#00f0ff55]"
+            className="bg-brand-blue px-8 py-4 text-base font-bold text-white rounded-xl shadow-md hover:shadow-lg hover:bg-brand-blue/90"
           >
             {gameRef.current && gameRef.current.currentRound + 1 >= gameRef.current.totalRounds
               ? "Ver Resultado Final"
@@ -212,7 +212,7 @@ export default function GamePlayPage() {
           ))}
         </div>
         {selectedOption && (
-          <p className="text-center font-mono text-sm text-muted-foreground animate-pulse">
+          <p className="text-center font-mono text-sm text-white/60 animate-pulse">
             Aguardando resultado...
           </p>
         )}

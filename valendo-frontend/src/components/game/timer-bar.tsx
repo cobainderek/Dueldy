@@ -16,12 +16,12 @@ export function TimerBar({ remaining, total }: TimerBarProps) {
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Timer className={`h-5 w-5 ${isCritical ? "animate-pulse text-destructive" : isUrgent ? "text-yellow-400" : "text-neon-cyan"}`} />
+          <Timer className={`h-5 w-5 ${isCritical ? "animate-pulse text-destructive" : isUrgent ? "text-yellow-400" : "text-brand-blue"}`} />
           <span className="text-sm font-medium text-muted-foreground">Tempo</span>
         </div>
         <span
           className={`font-mono text-2xl font-black tabular-nums ${
-            isCritical ? "text-destructive neon-text-magenta" : isUrgent ? "text-yellow-400" : "text-neon-cyan neon-text-cyan"
+            isCritical ? "text-destructive" : isUrgent ? "text-yellow-400" : "text-brand-blue"
           }`}
         >
           {remaining}s
@@ -34,7 +34,7 @@ export function TimerBar({ remaining, total }: TimerBarProps) {
               ? "bg-gradient-to-r from-destructive to-red-500 shadow-[0_0_12px_#ff334488]"
               : isUrgent
                 ? "bg-gradient-to-r from-yellow-500 to-yellow-400 shadow-[0_0_12px_#eab30844]"
-                : "bg-gradient-to-r from-neon-cyan to-neon-cyan/70 shadow-[0_0_12px_#00f0ff44]"
+                : "bg-gradient-to-r from-brand-blue to-brand-cyan shadow-[0_0_12px_rgba(43,94,167,0.3)]"
           }`}
           style={{ width: `${percent}%` }}
         />

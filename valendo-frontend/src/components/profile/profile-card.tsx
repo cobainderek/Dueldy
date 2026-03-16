@@ -41,13 +41,13 @@ export function ProfileCard({ profile, onSave }: ProfileCardProps) {
   }
 
   return (
-    <div className="gradient-border overflow-hidden rounded-2xl bg-card/80 backdrop-blur-sm neon-glow-cyan">
-      <div className="h-1 w-full bg-gradient-to-r from-neon-cyan via-neon-magenta to-neon-cyan" />
+    <div className="overflow-hidden rounded-2xl bg-white card-shadow">
+      <div className="h-1 w-full bg-gradient-to-r from-brand-blue via-brand-orange to-brand-blue" />
       <div className="p-8">
         <div className="flex items-start gap-6">
           {/* Avatar */}
           <div className="flex flex-col items-center gap-2">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-neon-cyan/10 text-4xl neon-glow-cyan">
+            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-brand-blue/10 text-4xl">
               {avatar}
             </div>
             {editing && (
@@ -59,7 +59,7 @@ export function ProfileCard({ profile, onSave }: ProfileCardProps) {
                     onClick={() => setAvatar(a)}
                     className={`flex h-8 w-8 items-center justify-center rounded-lg text-lg transition-all ${
                       avatar === a
-                        ? "bg-neon-cyan/20 ring-2 ring-neon-cyan"
+                        ? "bg-brand-blue/20 ring-2 ring-brand-blue"
                         : "bg-secondary/50 hover:bg-secondary"
                     }`}
                   >
@@ -77,12 +77,12 @@ export function ProfileCard({ profile, onSave }: ProfileCardProps) {
                 <Input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="h-11 rounded-xl border-border/40 bg-background/60 text-lg font-bold focus-visible:ring-2 focus-visible:ring-neon-cyan/50"
+                  className="h-11 rounded-xl border-border/40 bg-background/60 text-lg font-bold focus-visible:ring-2 focus-visible:ring-brand-blue/50"
                 />
               </div>
             ) : (
               <div>
-                <h2 className="text-2xl font-black text-neon-cyan neon-text-cyan">{profile.name}</h2>
+                <h2 className="text-2xl font-black text-brand-blue">{profile.name}</h2>
                 <span className="font-mono text-sm text-muted-foreground">{profile.tag}</span>
               </div>
             )}
@@ -101,7 +101,7 @@ export function ProfileCard({ profile, onSave }: ProfileCardProps) {
                   size="sm"
                   onClick={handleSave}
                   disabled={saving || name.length < 3}
-                  className="gap-1.5 rounded-lg bg-neon-cyan font-semibold text-background hover:bg-neon-cyan/90"
+                  className="gap-1.5 rounded-lg bg-brand-blue font-semibold text-white hover:bg-brand-blue/90"
                 >
                   <Check className="h-4 w-4" />
                   Salvar
@@ -120,7 +120,7 @@ export function ProfileCard({ profile, onSave }: ProfileCardProps) {
                 size="sm"
                 variant="outline"
                 onClick={() => setEditing(true)}
-                className="gap-1.5 rounded-lg border-border/40 hover:border-neon-cyan/30 hover:text-neon-cyan"
+                className="gap-1.5 rounded-lg border-brand-blue/30 bg-brand-blue/5 text-brand-blue font-semibold hover:border-brand-blue/50 hover:bg-brand-blue/10"
               >
                 <Pencil className="h-4 w-4" />
                 Editar

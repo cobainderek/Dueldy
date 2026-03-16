@@ -8,7 +8,7 @@ interface MatchHistoryProps {
 }
 
 const RESULT_CONFIG: Record<MatchResult, { label: string; color: string; bg: string; border: string; icon: typeof Trophy }> = {
-  win: { label: "Vitoria", color: "text-neon-green", bg: "bg-neon-green/10", border: "border-neon-green/20", icon: Trophy },
+  win: { label: "Vitoria", color: "text-brand-green", bg: "bg-brand-green/10", border: "border-brand-green/20", icon: Trophy },
   loss: { label: "Derrota", color: "text-destructive", bg: "bg-destructive/10", border: "border-destructive/20", icon: X },
   draw: { label: "Empate", color: "text-yellow-400", bg: "bg-yellow-500/10", border: "border-yellow-500/20", icon: Minus },
 };
@@ -32,7 +32,7 @@ export function MatchHistory({ matches }: MatchHistoryProps) {
         return (
           <div
             key={match.id}
-            className={`flex items-center gap-4 rounded-xl border-2 px-5 py-4 transition-all ${cfg.border} ${cfg.bg}`}
+            className={`flex items-center gap-4 rounded-xl bg-white card-shadow border-l-4 px-5 py-4 transition-all ${cfg.border}`}
           >
             {/* Result icon */}
             <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${cfg.bg}`}>
